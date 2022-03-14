@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import{useDispatch} from 'react-redux';
+import Love from './Love'
+
+import { ADD } from './Action/Action'
 
 function App() {
+  const [name,setname]=useState("")
+   const dispatch = useDispatch()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <input type="text" placeholder="add items" onChange={(e)=>{setname(e.target.value)} } value={name}></input>
+      <button onClick={()=>dispatch(ADD(name),setname(""))}>Add</button>
+      <Love/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
